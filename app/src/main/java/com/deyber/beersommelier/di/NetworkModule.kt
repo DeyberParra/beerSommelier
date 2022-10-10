@@ -23,6 +23,7 @@ object NetworkModule {
     @Provides
     fun provideBeerClient(retrofit: Retrofit):BeerClient = retrofit.create(BeerClient::class.java)
 
+
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient):Retrofit =

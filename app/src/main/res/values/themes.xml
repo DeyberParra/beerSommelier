@@ -42,7 +42,7 @@
     </style>
 
     <style name="descriptions">
-        <item name="android:textSize">16dp</item>
+        <item name="android:textSize">18dp</item>
     </style>
     <style name="descriotion_left" parent="descriptions">
         <item name="android:gravity">left</item>

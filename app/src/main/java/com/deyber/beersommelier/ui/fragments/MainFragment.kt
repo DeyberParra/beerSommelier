@@ -30,8 +30,6 @@ class MainFragment : Fragment() {
     private val detailVm:DetailViewModel by activityViewModels()
     private lateinit var adapter: BeerPresentationAdapter
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,9 +58,8 @@ class MainFragment : Fragment() {
             }
             it.doFailure { error, throwable, typeError ->
                 when (typeError) {
-                    TYPEERROR.NO_NETWORK ->
-                        findNavController().navigate(R.id.action_detailFragment_to_networkErrorFragment)
-                    TYPEERROR.NO_DATA -> findNavController().navigate(R.id.action_detailFragment_to_networkErrorFragment)
+                    TYPEERROR.NO_NETWORK -> findNavController().navigate(R.id.networkErrorFragment)
+                    TYPEERROR.NO_DATA -> findNavController().navigate(R.id.networkErrorFragment)
                 }
             }
         })

@@ -5,6 +5,7 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.util.Log
 import com.deyber.beersommelier.utils.resource.TYPEERROR
 import okhttp3.Interceptor
 import okhttp3.Protocol
@@ -19,14 +20,14 @@ class NetworkInterceptor @Inject constructor(private val context:Context):Interc
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
     init {
-        if(Build.VERSION.SDK_INT>=24){
+        if(Build.VERSION.SDK_INT>=29){
             connectivityManager.registerDefaultNetworkCallback(this)
         }
     }
 
     override fun intercept(chain: Interceptor.Chain): Response {
 
-        if(Build.VERSION.SDK_INT<24){
+        if(Build.VERSION.SDK_INT<29){
             isOnline = connectivityManager.activeNetworkInfo?.isConnected?:false
         }
 

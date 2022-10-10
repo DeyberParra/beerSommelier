@@ -1,0 +1,36 @@
+package com.deyber.beersommelier.utils.extensions
+
+import android.widget.TextView
+import com.deyber.beersommelier.data.network.model.Hops
+import com.deyber.beersommelier.data.network.model.Malt
+import com.deyber.beersommelier.data.network.model.MashTemp
+
+fun <R>TextView.listToString(data:ArrayList<R>){
+    var str:String =""
+    data.map{
+       str+= "$it\r\n"
+    }
+    this.text =str
+}
+fun TextView.mashTemp(data:ArrayList<MashTemp>){
+    var str:String =""
+    data.map{
+        str+="${it.temp?.value} ${it.temp?.unit} \r\n"
+    }
+    this.text =str
+}
+fun TextView.malt(data:ArrayList<Malt>){
+    var str:String =""
+    data.map{
+        str+="${it.name} ${it.amount?.value} ${it.amount?.unit}\r\n "
+    }
+    this.text =str
+}
+
+fun TextView.hops(data:ArrayList<Hops>){
+        var str:String =""
+        data.map{
+            str+="${it.name} ${it.attribute} ${it.amount?.value} ${it.amount?.unit} ${it.add}\r\n"
+        }
+    this.text =str
+}
