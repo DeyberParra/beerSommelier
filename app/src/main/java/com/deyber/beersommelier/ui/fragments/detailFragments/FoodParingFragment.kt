@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import com.deyber.beersommelier.databinding.FragmentFoodParingBinding
 import com.deyber.beersommelier.ui.vm.DetailViewModel
 import com.deyber.beersommelier.utils.constants.RetrofitConstants.defaultImg
+import com.deyber.beersommelier.utils.extensions.addElement
 import com.deyber.beersommelier.utils.extensions.listToString
 import com.deyber.beersommelier.utils.extensions.picaso
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,7 +39,7 @@ class FoodParingFragment : Fragment() {
 
              */
             binding.beerName.text = beer.name
-            binding.beerFoods.listToString(beer.foodPairing)
+            binding.beerFoods.addElement(beer.foodPairing)
             binding.beerImage.picaso(beer.imageUrl?:defaultImg)
 
         })

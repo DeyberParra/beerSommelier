@@ -24,8 +24,9 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Nombre" />
 
-        <TextView
+        <LinearLayout
             android:id="@+id/beer_foods"
+            android:orientation="vertical"
             style="@style/descriotion_left"
             android:layout_width="0dp"
             android:layout_height="0dp"
