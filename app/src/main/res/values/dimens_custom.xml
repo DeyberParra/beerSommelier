@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="radius_card_beer">10dp</dimen>
+    <declare-styleable name="cardBeerImageView">
+        <attr name="ratio" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="ImageWithTitleView">
+        <attr name="text" format="string"/>
+        <attr name="src" format="string"/>
+    </declare-styleable>
+</resources>
+
+
+

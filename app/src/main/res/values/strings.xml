@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">beerSommelier</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--NETWORK-->
+    <string name="error_connection_title">Sin conexión temporal</string>
+    <string name="error_connection_content">La conexión a internet a fallado, por favor revise su conexion.</string>
+
+    <!--BEERS ATTRIBUTES-->
+    <string name="ph_title">Ph</string>
+    <string name="attenuation_title">Attenuetion</string>
+    <string name="fermentation">Fermentation</string>
+    <string name="method">Method</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="hops">Hops</string>
+    <string name="name">Name</string>
+    <string name="amount">Amount</string>
+
+</resources>
