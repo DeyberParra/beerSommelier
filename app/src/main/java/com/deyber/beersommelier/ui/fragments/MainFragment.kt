@@ -1,6 +1,5 @@
 package com.deyber.beersommelier.ui.fragments
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -50,13 +49,25 @@ class MainFragment : Fragment() {
         mainVm.onCreate()
         mainVm.getBeers().observe(viewLifecycleOwner, Observer {
             it.doLoading {
-                Log.i("beers", "cargando datos...")
+
+                binding.spinnerAnimation.apply {
+                    visibility = View.VISIBLE
+                    playAnimation()
+                }
             }
             it.doSuccess { data ->
-                Log.i("beers", data.toString())
+                binding.spinnerAnimation.apply {
+                    pauseAnimation()
+                    visibility = View.GONE
+                }
                 adapter.sentData(data)
+
             }
             it.doFailure { error, throwable, typeError ->
+                binding.spinnerAnimation.apply {
+                    pauseAnimation()
+                    visibility = View.GONE
+                }
                 when (typeError) {
                     TYPEERROR.NO_NETWORK -> findNavController().navigate(R.id.networkErrorFragment)
                     TYPEERROR.NO_DATA -> findNavController().navigate(R.id.networkErrorFragment)

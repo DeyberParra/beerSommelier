@@ -16,5 +16,6 @@
     <string name="hops">Hops</string>
     <string name="name">Name</string>
     <string name="amount">Amount</string>
+    <string name="brew_tips">Brew tips</string>
 
 </resources>

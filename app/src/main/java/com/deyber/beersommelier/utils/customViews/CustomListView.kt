@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.widget.TextView
 import com.deyber.beersommelier.R
 
-class FoodView @JvmOverloads constructor(
+class CustomListView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : LinearLayout(context, attrs) {
 
@@ -16,7 +16,7 @@ class FoodView @JvmOverloads constructor(
     init {
         val view = LayoutInflater
             .from(context)
-            .inflate(R.layout.view_food, this, true)
+            .inflate(R.layout.view_cutom_list, this, true)
         title = view.findViewById(R.id.food_title)
 
     }

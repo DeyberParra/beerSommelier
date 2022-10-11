@@ -1,11 +1,8 @@
 package com.deyber.beersommelier.ui.fragments.adapter
 
-
 import androidx.fragment.app.Fragment
-
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-
 import com.deyber.beersommelier.ui.fragments.detailFragments.AbstractFragment
 import com.deyber.beersommelier.ui.fragments.detailFragments.FoodParingFragment
 import com.deyber.beersommelier.ui.fragments.detailFragments.IngredientsFragment
@@ -15,9 +12,9 @@ class DetailPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm) {
 
     companion object{
         const val options:Int = 3
-        const val option_1:String = "Abstract"
+        const val option_1:String = "Food paring"
         const val option_2:String = "Ingredients"
-        const val option_3:String = "Food pairing"
+        const val option_3:String = "Abstract"
     }
 
     override fun getCount(): Int {
@@ -26,9 +23,9 @@ class DetailPagerAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
         when(position){
-            0 -> return AbstractFragment()
+            0 -> return FoodParingFragment()
             1 -> return IngredientsFragment()
-            2 -> return FoodParingFragment()
+            2 -> return AbstractFragment()
             else-> return AbstractFragment()
         }
     }

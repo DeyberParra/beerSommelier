@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import com.deyber.beersommelier.R
 import com.deyber.beersommelier.databinding.FragmentFoodParingBinding
 import com.deyber.beersommelier.ui.vm.DetailViewModel
 import com.deyber.beersommelier.utils.constants.RetrofitConstants.defaultImg
 import com.deyber.beersommelier.utils.extensions.addElement
-import com.deyber.beersommelier.utils.extensions.listToString
 import com.deyber.beersommelier.utils.extensions.picaso
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,17 +31,11 @@ class FoodParingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         vm.beerData.observe(viewLifecycleOwner, Observer{ beer->
-            /*
-            var foods:String=""
-            beer.foodPairing.map {
-                foods+="$it\r\n"
-            }
-
-             */
             binding.beerName.text = beer.name
+            binding.beerTitleBrewTips.text = getString(R.string.brew_tips)
             binding.beerFoods.addElement(beer.foodPairing)
+            binding.beerBrewTips.text = beer.brewersTips
             binding.beerImage.picaso(beer.imageUrl?:defaultImg)
-
         })
 
     }

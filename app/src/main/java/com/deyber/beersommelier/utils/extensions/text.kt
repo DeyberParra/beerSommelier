@@ -1,11 +1,13 @@
 package com.deyber.beersommelier.utils.extensions
 
+import android.graphics.drawable.Drawable
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.deyber.beersommelier.R
 import com.deyber.beersommelier.data.network.model.Hops
 import com.deyber.beersommelier.data.network.model.Malt
 import com.deyber.beersommelier.data.network.model.MashTemp
-import com.deyber.beersommelier.utils.customViews.FoodView
+import com.deyber.beersommelier.utils.customViews.CustomListView
 
 fun <R>TextView.listToString(data:ArrayList<R>){
     var str:String =""
@@ -17,7 +19,7 @@ fun <R>TextView.listToString(data:ArrayList<R>){
 
 fun <R>LinearLayout.addElement(data:ArrayList<R>){
     data.map{
-        val vf = FoodView(this.context)
+        val vf = CustomListView(this.context)
         vf.setTitle(it.toString())
         this.addView(vf)
     }

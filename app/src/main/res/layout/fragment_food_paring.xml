@@ -13,6 +13,29 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/beer_brew_tips"
+            style="@style/descriotion_left"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:justificationMode="inter_word"
+            app:layout_constraintEnd_toStartOf="@+id/guideline13"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/beer_title_brew_tips"
+            tools:text="Descriptions" />
+
+        <TextView
+            android:id="@+id/beer_title_brew_tips"
+            style="@style/title_center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toStartOf="@+id/guideline13"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/beer_foods"
+            tools:text="@string/brew_tips" />
+
+        <TextView
             android:id="@+id/beer_name"
             style="@style/super_titles_fragment"
             android:layout_width="0dp"
@@ -26,11 +49,10 @@
 
         <LinearLayout
             android:id="@+id/beer_foods"
-            android:orientation="vertical"
             style="@style/descriotion_left"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintEnd_toStartOf="@+id/guideline13"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline14"
