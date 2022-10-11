@@ -13,4 +13,10 @@ class RepositoryImplementation @Inject constructor(private val beerClient: BeerC
             response.body()
         }
     }
+    suspend fun getBeersforPage(page:Int):List<BeerModel>?{
+        return withContext(Dispatchers.IO){
+            val response = beerClient.getBeersforPage(page)
+            response.body()
+        }
+    }
 }

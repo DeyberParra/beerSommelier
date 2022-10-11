@@ -35,7 +35,13 @@ class BeerPresentationAdapter(private val listener:(item:BeerModel)->Unit):Recyc
         }
     }
 
-    override fun getItemCount(): Int  = beers.size
+    override fun getItemCount(): Int {
+        if(beers.isNullOrEmpty()){
+            return 0
+        }else{
+            return  beers.size
+        }
+    }
 
     class BeerViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 

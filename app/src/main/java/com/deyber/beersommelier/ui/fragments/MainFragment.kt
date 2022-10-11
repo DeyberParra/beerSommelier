@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.deyber.beersommelier.R
 import com.deyber.beersommelier.databinding.FragmentMainBinding
 import com.deyber.beersommelier.ui.fragments.adapter.BeerPresentationAdapter
@@ -45,11 +46,22 @@ class MainFragment : Fragment() {
         }
         binding.mainRyclerview.adapter = adapter
         binding.mainRyclerview.layoutManager = GridLayoutManager(requireContext(), 2)
+        getData()
 
-        mainVm.onCreate()
+        val layoutManager =binding.mainRyclerview.layoutManager as GridLayoutManager
+        binding.mainRyclerview.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                mainVm.lastVisible.value= layoutManager.findLastVisibleItemPosition()
+            }
+        })
+    }
+
+    private fun getData(){
+        //mainVm.onCreate()
         mainVm.getBeers().observe(viewLifecycleOwner, Observer {
             it.doLoading {
-
                 binding.spinnerAnimation.apply {
                     visibility = View.VISIBLE
                     playAnimation()
@@ -58,7 +70,7 @@ class MainFragment : Fragment() {
             it.doSuccess { data ->
                 binding.spinnerAnimation.apply {
                     pauseAnimation()
-                    visibility = View.GONE
+                    visibility = View.INVISIBLE
                 }
                 adapter.sentData(data)
 
