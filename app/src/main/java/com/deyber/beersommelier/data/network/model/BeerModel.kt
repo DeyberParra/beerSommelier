@@ -14,7 +14,7 @@ data class BeerModel(
     @SerializedName("ibu"               ) var ibu              : Double?              = null,
     @SerializedName("target_fg"         ) var targetFg         : Int?              = null,
     @SerializedName("target_og"         ) var targetOg         : Double?              = null,
-    @SerializedName("ebc"               ) var ebc              : Int?              = null,
+    @SerializedName("ebc"               ) var ebc              : Double?              = null,
     @SerializedName("srm"               ) var srm              : Double?              = null,
     @SerializedName("ph"                ) var ph               : Double?           = null,
     @SerializedName("attenuation_level" ) var attenuationLevel : Double?              = null,

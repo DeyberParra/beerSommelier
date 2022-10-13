@@ -1,9 +1,7 @@
 package com.deyber.beersommelier.utils.extensions
 
-import android.graphics.drawable.Drawable
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.deyber.beersommelier.R
 import com.deyber.beersommelier.data.network.model.Hops
 import com.deyber.beersommelier.data.network.model.Malt
 import com.deyber.beersommelier.data.network.model.MashTemp
@@ -27,14 +25,14 @@ fun <R>LinearLayout.addElement(data:ArrayList<R>){
 fun TextView.mashTemp(data:ArrayList<MashTemp>){
     var str:String =""
     data.map{
-        str+="${it.temp?.value} ${it.temp?.unit} \r\n"
+        str+="${it.temp?.value} ${it.temp?.unit}\r\n"
     }
     this.text =str
 }
 fun TextView.malt(data:ArrayList<Malt>){
     var str:String =""
     data.map{
-        str+="${it.name} ${it.amount?.value} ${it.amount?.unit}\r\n "
+        str+="${it.name} ${it.amount?.value} ${it.amount?.unit}\r\n"
     }
     this.text =str
 }

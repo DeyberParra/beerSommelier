@@ -15,3 +15,7 @@ interface BeerClient {
 
 
 }
+
+data class ResponseItems<T>(
+     val results: List<T>
+)

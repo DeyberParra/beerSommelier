@@ -6,29 +6,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.deyber.beersommelier.R
 import com.deyber.beersommelier.databinding.FragmentMainBinding
-import com.deyber.beersommelier.ui.fragments.adapter.BeerPresentationAdapter
+import com.deyber.beersommelier.ui.fragments.adapter.BeerPagerAdapter
 import com.deyber.beersommelier.ui.vm.DetailViewModel
-import com.deyber.beersommelier.ui.vm.MainViewModel
-import com.deyber.beersommelier.utils.resource.TYPEERROR
-import com.deyber.beersommelier.utils.resource.doFailure
-import com.deyber.beersommelier.utils.resource.doLoading
-import com.deyber.beersommelier.utils.resource.doSuccess
+import com.deyber.beersommelier.ui.vm.PagingViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
-    private val mainVm: MainViewModel by viewModels()
+    private val vm: PagingViewModel by viewModels()
     private val detailVm:DetailViewModel by activityViewModels()
-    private lateinit var adapter: BeerPresentationAdapter
+    private lateinit var adapter: BeerPagerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,51 +40,44 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = BeerPresentationAdapter { beer ->
+        initView()
+        collectState()
+        adapter.addLoadStateListener { state->
+            if(state.refresh is LoadState.Loading || state.append is LoadState.Loading){
+                binding.spinnerAnimation.visibility = View.VISIBLE
+            }else{
+                binding.spinnerAnimation.visibility = View.GONE
+
+                val error = when{
+                    state.append is LoadState.Error -> state.append as LoadState.Error
+                    state.prepend is LoadState.Error -> state.prepend as LoadState.Error
+                    state.refresh is LoadState.Error -> state.refresh as LoadState.Error
+                    else -> null
+                }
+                error?.let {
+                    findNavController().navigate(R.id.networkErrorFragment)
+                }
+            }
+        }
+    }
+
+    private fun initView(){
+        adapter = BeerPagerAdapter { beer ->
             detailVm.select(beer)
             findNavController().navigate(R.id.action_mainFragment_to_detailFragment)
         }
         binding.mainRyclerview.adapter = adapter
         binding.mainRyclerview.layoutManager = GridLayoutManager(requireContext(), 2)
-        getData()
+    }
+    private fun collectState(){
 
-        val layoutManager =binding.mainRyclerview.layoutManager as GridLayoutManager
-        binding.mainRyclerview.addOnScrollListener(object :RecyclerView.OnScrollListener(){
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-
-                mainVm.lastVisible.value= layoutManager.findLastVisibleItemPosition()
+        lifecycleScope.launch{
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                vm.getBeers().collectLatest {
+                    adapter.submitData(it)
+                }
             }
-        })
+        }
     }
 
-    private fun getData(){
-        //mainVm.onCreate()
-        mainVm.getBeers().observe(viewLifecycleOwner, Observer {
-            it.doLoading {
-                binding.spinnerAnimation.apply {
-                    visibility = View.VISIBLE
-                    playAnimation()
-                }
-            }
-            it.doSuccess { data ->
-                binding.spinnerAnimation.apply {
-                    pauseAnimation()
-                    visibility = View.INVISIBLE
-                }
-                adapter.sentData(data)
-
-            }
-            it.doFailure { error, throwable, typeError ->
-                binding.spinnerAnimation.apply {
-                    pauseAnimation()
-                    visibility = View.GONE
-                }
-                when (typeError) {
-                    TYPEERROR.NO_NETWORK -> findNavController().navigate(R.id.networkErrorFragment)
-                    TYPEERROR.NO_DATA -> findNavController().navigate(R.id.networkErrorFragment)
-                }
-            }
-        })
-    }
 }

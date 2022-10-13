@@ -27,7 +27,7 @@ class BeerPresentationAdapter(private val listener:(item:BeerModel)->Unit):Recyc
     }
 
     override fun onBindViewHolder(holder: BeerViewHolder, position: Int) {
-        itemCount.let { pisition->
+        itemCount.let { position->
             holder.bind(beers[position], position)
             holder.itemView.setOnClickListener{
                 listener(beers[position])
@@ -36,10 +36,10 @@ class BeerPresentationAdapter(private val listener:(item:BeerModel)->Unit):Recyc
     }
 
     override fun getItemCount(): Int {
-        if(beers.isNullOrEmpty()){
-            return 0
+        return if(beers.isNullOrEmpty()){
+            0
         }else{
-            return  beers.size
+            beers.size
         }
     }
 
