@@ -13,9 +13,7 @@ interface BeerClient {
      @GET("beers")
      suspend fun getBeersforPage(@Query("page") page: Int):Response<List<BeerModel>>
 
+     @GET("beers")
+     suspend fun getBeersforBeersName(@Query("beer_name") name:String):Response<List<BeerModel>>
 
 }
-
-data class ResponseItems<T>(
-     val results: List<T>
-)
