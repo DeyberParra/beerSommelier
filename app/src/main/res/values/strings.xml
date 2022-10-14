@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">beerSommelier</string>
+    <string name="app_name">BeerS</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -17,5 +17,9 @@
     <string name="name">Name</string>
     <string name="amount">Amount</string>
     <string name="brew_tips">Brew tips</string>
+
+    <string name="title_search_bar">Search food or beer</string>
+    <string name="search_by_meal">Search by meal</string>
+    <string name="search_by_beer">Search by beer</string>
 
 </resources>

@@ -4,9 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.deyber.beersommelier.data.network.repository.RepositoryImplementation
 import com.deyber.beersommelier.data.network.model.BeerModel
-import com.deyber.beersommelier.data.network.repository.dataSource.BeersPagingSource
 import com.deyber.beersommelier.domain.BeerPagingUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
