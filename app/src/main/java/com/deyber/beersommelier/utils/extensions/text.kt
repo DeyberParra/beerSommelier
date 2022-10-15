@@ -2,6 +2,7 @@ package com.deyber.beersommelier.utils.extensions
 
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.deyber.beersommelier.R
 import com.deyber.beersommelier.data.network.model.Hops
 import com.deyber.beersommelier.data.network.model.Malt
 import com.deyber.beersommelier.data.network.model.MashTemp
@@ -43,4 +44,11 @@ fun TextView.hops(data:ArrayList<Hops>){
             str+="${it.name} ${it.attribute} ${it.amount?.value} ${it.amount?.unit} ${it.add}\r\n"
         }
     this.text =str
+}
+fun ArrayList<String>.toText():String{
+    var str:String=""
+    this.map {
+        str += "$it\r\n"
+    }
+    return str
 }

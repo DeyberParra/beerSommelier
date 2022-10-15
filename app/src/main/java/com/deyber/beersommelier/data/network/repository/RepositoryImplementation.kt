@@ -11,12 +11,20 @@ class RepositoryImplementation @Inject constructor(
     private val beerClient: BeerClient ,
     private val beerDataSourceImplementation: BeerDataSourceImplementation
     ):Repository {
-    override suspend fun getBeers(): List<BeerModel>?{
+
+    override suspend fun getBeersByName(name:String): List<BeerModel>?{
         return withContext(Dispatchers.IO){
-            val response = beerClient.getBeers()
+            val response = beerClient.getBeersByName(name)
             response.body()
         }
     }
+
+    override suspend fun getBeersByFood(food: String): List<BeerModel>? {
+       return withContext(Dispatchers.IO){
+           beerClient.getBeersByFood(food).body()
+       }
+    }
+
 
     override fun getBeersforPage(): BeerDataSourceImplementation = beerDataSourceImplementation
 }
