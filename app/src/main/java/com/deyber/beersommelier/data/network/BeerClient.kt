@@ -7,15 +7,14 @@ import retrofit2.http.Query
 
 interface BeerClient {
 
-     @GET("beers")
-     suspend fun getBeers():Response<List<BeerModel>>
 
      @GET("beers")
      suspend fun getBeersforPage(@Query("page") page: Int):Response<List<BeerModel>>
 
+     @GET("beers")
+     suspend fun getBeersByName(@Query("beer_name") name:String):Response<List<BeerModel>>
+
+     @GET("beers")
+     suspend fun getBeersByFood(@Query("food")food:String):Response<List<BeerModel>>
 
 }
-
-data class ResponseItems<T>(
-     val results: List<T>
-)
