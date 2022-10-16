@@ -22,4 +22,18 @@
     <string name="search_by_meal">Search by meal</string>
     <string name="search_by_beer">Search by beer</string>
 
+
+    <!--ON BOARDING -->
+    <string name="slide_first_title">Find you beer</string>
+    <string name="slide_first_content">Use the beer finder for quick search</string>
+
+    <string name="slide_second_title">Look for your beer for food</string>
+    <string name="slide_second_content">Quickly change your search for the beer that best pairs with your favorite food</string>
+
+    <string name="slide_thirt_title">know more about beer</string>
+    <string name="slide_thirt_content">you can know the ingredients and history of your beer</string>
+
+    <string name="Next">Next</string>
+    <string name="Finis">Finish</string>
+
 </resources>

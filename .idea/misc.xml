@@ -14,6 +14,8 @@
         <entry key="..\:/beersommerlier/app/src/main/res/layout/view_food.xml" value="0.365625" />
         <entry key="app/src/main/res/drawable-v24/beer.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable-v24/dinner.xml" value="0.178" />
+        <entry key="app/src/main/res/drawable-v24/indicator_active.xml" value="0.1555" />
+        <entry key="app/src/main/res/drawable-v24/indicator_inactive.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable/button.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.1555" />
@@ -25,11 +27,15 @@
         <entry key="app/src/main/res/layout/fragment_food_paring.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_ingredients.xml" value="0.34089427053192534" />
         <entry key="app/src/main/res/layout/fragment_ingredients2.xml" value="0.5502742230347349" />
+        <entry key="app/src/main/res/layout/fragment_init.xml" value="0.2115036231884058" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.5120175170898438" />
         <entry key="app/src/main/res/layout/fragment_network_error.xml" value="0.26766304347826086" />
+        <entry key="app/src/main/res/layout/fragment_onboarding.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_resumen.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.2115036231884058" />
         <entry key="app/src/main/res/layout/item_beer.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/item_onboarding_slide.xml" value="0.2115036231884058" />
+        <entry key="app/src/main/res/layout/slide_item_fragment.xml" value="0.2728915662650602" />
         <entry key="app/src/main/res/layout/view_cutom_list.xml" value="0.3322884012539185" />
         <entry key="app/src/main/res/layout/view_food.xml" value="0.29354864192914354" />
         <entry key="app/src/main/res/menu/search_menu.xml" value="0.1" />
