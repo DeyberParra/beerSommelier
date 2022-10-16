@@ -34,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
+            android:textStyle="bold"
             android:gravity="center_horizontal"
             android:singleLine="true"
             tools:text="Title" />
@@ -44,7 +45,6 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:gravity="center_horizontal"
-            android:singleLine="true"
             tools:text="first_brew" />
 
     </LinearLayout>

@@ -5,6 +5,8 @@ import com.deyber.beersommelier.data.network.model.BeerModel
 
 interface Repository {
 
-    suspend fun getBeers():List<BeerModel>?
+    suspend fun getBeersByName(name:String):List<BeerModel>?
+    suspend fun getBeersByFood(food:String):List<BeerModel>?
     fun getBeersforPage(): BeerDataSourceImplementation
+
 }
