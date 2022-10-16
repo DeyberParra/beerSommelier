@@ -163,7 +163,10 @@ class MainFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
-
+            R.id.action_search->{
+                Log.i("click en lupa", "hiciste click en lupa")
+                return true
+            }
             R.id.search_by_beer_name->{
                 shareVm.selectSearchBeerType(SearchBeersTypes.NAME_BEERS)
                 return true

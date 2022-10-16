@@ -19,9 +19,12 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val beersByName:BeersByNameUseCase,
     private val beersByFood: BeersByFoodUseCase
+
     ):ViewModel() {
 
     private val resultBeers = MutableLiveData<Resource<List<BeerModel>>>()
+
+
 
     fun resultBeers() = resultBeers
 
@@ -29,7 +32,6 @@ class MainViewModel @Inject constructor(
         when(searchType){
             SearchBeersTypes.NAME_BEERS->{ getBeersByName(query)}
             SearchBeersTypes.FOOD_BEERS->{ getBeersByFood(query)}
-            //else->{getBeersByName(query)}
         }
     }
 
