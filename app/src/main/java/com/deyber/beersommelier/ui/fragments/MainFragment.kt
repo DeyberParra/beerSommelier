@@ -1,13 +1,12 @@
 package com.deyber.beersommelier.ui.fragments
 import android.os.Bundle
-import android.util.Log
 import android.view.*
+import androidx.activity.addCallback
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -45,6 +44,14 @@ class MainFragment : Fragment() {
     private lateinit var searchView :SearchView
     private lateinit var typeSearch :MenuItem
     private lateinit var searchBeersTypes:SearchBeersTypes
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this){
+            isEnabled = true
+
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -164,7 +171,6 @@ class MainFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.action_search->{
-                Log.i("click en lupa", "hiciste click en lupa")
                 return true
             }
             R.id.search_by_beer_name->{
